@@ -1,5 +1,8 @@
 <template>
     <main id="main">
+        <div v-if="loading" class="center">
+            <AppLoading />
+        </div>
         <div class="container">
             <AppCdList 
                 v-for="(item, index) in cardContent"
@@ -12,15 +15,18 @@
 
 <script>
 import AppCdList from "./AppCdList";
+import AppLoading from "./AppLoading.vue";
 import axios from "axios";
 export default {
     name: "AppMain",
     components: {
         AppCdList,
+        AppLoading,
     },
     data: function() {
         return {
             cardContent: [],
+            loading: true,
         };
     },
     created() {
@@ -28,6 +34,7 @@ export default {
         .then((resp) =>{
             const cdArray = resp.data.response;
             this.cardContent = cdArray;
+            this.loading = false;
         });
     }
 };
@@ -47,5 +54,12 @@ export default {
     justify-content: flex-start;
     flex-wrap: wrap;
     width: 60%;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 </style>
