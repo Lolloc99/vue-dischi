@@ -73,6 +73,6 @@ export default {
 #searchbar {
   position: absolute;
   top: 10px;
-  width: 200px;
+  width: 400px;
 }
 </style>
