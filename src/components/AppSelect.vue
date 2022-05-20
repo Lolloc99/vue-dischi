@@ -1,5 +1,6 @@
 <template>
   <div class="select-container">
+    <label for="">Genere:</label>
     <select
       name=""
       id=""
@@ -38,5 +39,12 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1rem;
+}
+
+label {
+  margin-right: 1rem;
+  color: white;
+  font-weight: bold;
 }
 </style>

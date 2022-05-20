@@ -100,7 +100,7 @@ export default {
 
 #command-section {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
   width: 200px;
   margin-bottom: 2rem;
 }
