@@ -1,9 +1,11 @@
 <template>
   <div class="select-container">
-    <select name="selector" id="selector">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
+    <select name="" id="" v-model="userChoice" @change="$emit('SelectedChoice', userChoice)">
+      <option value="">All</option>
+      <option value="rock">Rock</option>
+      <option value="pop">Pop</option>
+      <option value="jazz">Jazz</option>
+      <option value="metal">Metal</option>
     </select>
   </div>
 </template>
@@ -13,7 +15,7 @@ export default {
   name: "AppSelect",
   data: function () {
     return {
-      userWord: "",
+      userChoice: "",
     };
   },
   methods: {},

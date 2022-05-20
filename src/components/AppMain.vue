@@ -3,12 +3,12 @@
     <div v-if="loading" class="center">
       <AppLoading />
     </div>
-    <div id="selectbar">
-      <AppSelect />
+    <div id="command-section">
+      <AppSelect @SelectedChoice="saveChosen($event)" />
     </div>
     <div class="container">
       <AppCdList
-        v-for="(item, index) in cardContent"
+        v-for="(item, index) in filterAlbum"
         :key="index"
         :cardObject="item"
       />
@@ -32,8 +32,26 @@ export default {
     return {
       cardContent: [],
       loading: true,
+      choice: "",
     };
   },
+
+  computed: {
+    filterAlbum: function () {
+      const wordFormatted = this.choice.toLowerCase();
+      const filterGenre = this.cardContent.filter((item) => {
+        return item.genre.toLowerCase().includes(wordFormatted);
+      });
+      return filterGenre;
+    },
+  },
+
+  methods: {
+    saveChosen: function (word) {
+      this.choice = word;
+    },
+  },
+
   created() {
     axios
       .get("https://flynn.boolean.careers/exercises/api/array/music")
@@ -49,9 +67,9 @@ export default {
 <style lang="scss" scoped>
 #main {
   display: flex;
-  justify-content: center;
-  position: relative;
-  padding: 4rem;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
   height: calc(100vh - 84px);
   background-color: #1e2d3b;
 }
@@ -70,9 +88,8 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-#selectbar {
-  position: absolute;
-  top: 10px;
+#command-section {
   width: 200px;
+  margin-bottom: 2rem;
 }
 </style>

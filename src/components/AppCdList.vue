@@ -20,7 +20,7 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  margin: 0.3rem 1rem;
+  margin: 0.5rem 1rem;
   width: calc(100% / 5 - 2rem);
   text-align: center;
   max-height: 340px;
