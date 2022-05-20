@@ -1,6 +1,11 @@
 <template>
   <div class="select-container">
-    <select name="" id="" v-model="userChoice" @change="$emit('SelectedChoice', userChoice)">
+    <select
+      name=""
+      id=""
+      v-model="userChoice"
+      @change="$emit('SelectedChoice', userChoice)"
+    >
       <option value="">All</option>
       <option value="rock">Rock</option>
       <option value="pop">Pop</option>
@@ -18,13 +23,11 @@ export default {
       userChoice: "",
     };
   },
-  methods: {},
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 select {
-  width: 100%;
   height: 30px;
   border: 2px solid white;
   color: white;

@@ -5,6 +5,7 @@
     </div>
     <div id="command-section">
       <AppSelect @SelectedChoice="saveChosen($event)" />
+      <AppSelectAuthor @SelectedAuthorChoice="saveChosenAuthor($event)" />
     </div>
     <div class="container">
       <AppCdList
@@ -20,6 +21,7 @@
 import AppCdList from "./AppCdList";
 import AppLoading from "./AppLoading.vue";
 import AppSelect from "./AppSelect.vue";
+import AppSelectAuthor from "./AppSelectAuthor.vue";
 import axios from "axios";
 export default {
   name: "AppMain",
@@ -27,28 +29,36 @@ export default {
     AppCdList,
     AppLoading,
     AppSelect,
+    AppSelectAuthor,
   },
+
   data: function () {
     return {
       cardContent: [],
       loading: true,
       choice: "",
+      choiceAuthor: "",
     };
   },
 
   computed: {
     filterAlbum: function () {
-      const wordFormatted = this.choice.toLowerCase();
-      const filterGenre = this.cardContent.filter((item) => {
-        return item.genre.toLowerCase().includes(wordFormatted);
+      const filter = this.cardContent.filter((item) => {
+        return (
+          item.genre.toLowerCase().includes(this.choice) &&
+          item.author.toLowerCase().includes(this.choiceAuthor)
+        );
       });
-      return filterGenre;
+      return filter;
     },
   },
 
   methods: {
-    saveChosen: function (word) {
-      this.choice = word;
+    saveChosen: function (genre) {
+      this.choice = genre;
+    },
+    saveChosenAuthor: function (author) {
+      this.choiceAuthor = author;
     },
   },
 
@@ -89,6 +99,8 @@ export default {
 }
 
 #command-section {
+  display: flex;
+  justify-content: space-evenly;
   width: 200px;
   margin-bottom: 2rem;
 }
