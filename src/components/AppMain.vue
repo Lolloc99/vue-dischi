@@ -3,8 +3,8 @@
     <div v-if="loading" class="center">
       <AppLoading />
     </div>
-    <div id="searchbar">
-      <AppSearch />
+    <div id="selectbar">
+      <AppSelect />
     </div>
     <div class="container">
       <AppCdList
@@ -19,14 +19,14 @@
 <script>
 import AppCdList from "./AppCdList";
 import AppLoading from "./AppLoading.vue";
-import AppSearch from "./AppSearch.vue";
+import AppSelect from "./AppSelect.vue";
 import axios from "axios";
 export default {
   name: "AppMain",
   components: {
     AppCdList,
     AppLoading,
-    AppSearch,
+    AppSelect,
   },
   data: function () {
     return {
@@ -70,9 +70,9 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-#searchbar {
+#selectbar {
   position: absolute;
   top: 10px;
-  width: 400px;
+  width: 200px;
 }
 </style>
